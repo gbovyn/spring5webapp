@@ -1,28 +1,22 @@
 package be.gfi.spring5webapp.services;
 
+import be.gfi.quote.Quotes;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 @Slf4j
 public class ChuckNorrisJokeServiceImpl implements JokeService {
 
-    private static final List<String> QUOTES = Arrays.asList(
-            "Chuck Norris counted to infinity. Twice.",
-            "Chuck Norris can kill two stones with one bird.",
-            "Chuck Norris beat the sun in a staring contest."
-    );
+    private final @NonNull Quotes quotes;
+
+    private ChuckNorrisJokeServiceImpl(final Quotes chuckQuotes) {
+        this.quotes = chuckQuotes;
+    }
 
     @Override
     public String getJoke() {
-        return QUOTES.get(getRandomIndex());
-    }
-
-    private static int getRandomIndex() {
-        return ThreadLocalRandom.current().nextInt(QUOTES.size());
+        return quotes.getRandomQuote();
     }
 }
