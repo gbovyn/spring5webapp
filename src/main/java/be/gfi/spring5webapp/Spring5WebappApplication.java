@@ -1,5 +1,6 @@
 package be.gfi.spring5webapp;
 
+import be.gfi.properties.GfiProperties;
 import be.gfi.spring5webapp.controllers.GreetingController;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "be.gfi.quote", "be.gfi.spring5webapp" })
+@ComponentScan(basePackages = { "be.gfi.quote", "be.gfi.spring5webapp", "be.gfi.properties" })
 @ImportResource("classpath:quote-config.xml")
 @Slf4j
 public class Spring5WebappApplication {
@@ -35,5 +36,9 @@ public class Spring5WebappApplication {
 		val newAuthorController = context.getBean(GreetingController.class);
 
 		newAuthorController.hello();
+
+		val gfiProperties = context.getBean(GfiProperties.class);
+
+		log.info("{}", gfiProperties);
 	}
 }
