@@ -1,0 +1,7 @@
+gfi:
+  login:
+    url: http://gfi.be/login
+  logout:
+    url: http://gfi.be/logout
+  user: user-override
+  pass: pass-override

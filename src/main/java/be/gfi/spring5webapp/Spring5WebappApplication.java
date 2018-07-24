@@ -1,6 +1,8 @@
 package be.gfi.spring5webapp;
 
+import be.gfi.properties.GfiApplicationProperties;
 import be.gfi.properties.GfiProperties;
+import be.gfi.properties.OtherGfiProperties;
 import be.gfi.spring5webapp.controllers.GreetingController;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -40,5 +42,13 @@ public class Spring5WebappApplication {
 		val gfiProperties = context.getBean(GfiProperties.class);
 
 		log.info("{}", gfiProperties);
+
+		final OtherGfiProperties otherGfiProperties = context.getBean(OtherGfiProperties.class);
+
+		log.info("{}", otherGfiProperties);
+
+		val gfiApplicationProperties = context.getBean(GfiApplicationProperties.class);
+
+		log.info("{}", gfiApplicationProperties);
 	}
 }
